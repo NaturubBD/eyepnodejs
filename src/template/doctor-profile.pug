@@ -1,0 +1,327 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  style.
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+    background: #FBFBFB;
+    color: #000000;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
+    }
+    * {
+    box-sizing: border-box;
+    }
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    li,
+    ol {
+    margin: 0;
+    padding: 0;
+    }
+    main {
+    width: 768px;
+    max-width: 100%;
+    margin: auto;
+    }
+    .breadcrumb {
+    background-color: #fff;
+    position: relative;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    }
+    .breadcrumb__arrow_left_icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+    .meta {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 25px 10px;
+    }
+    .meta__thumb {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    }
+    .meta__thumb img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-color: #888E9D;
+    }
+    .meta__content h2 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    margin-bottom: 10px;
+    }
+    .meta__content p {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #888E9D;
+    margin-bottom: 5px;
+    }
+    .meta__content h5 {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #001B0D;
+    }
+    .doc_report {
+    background: #EFEFEF;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    }
+    .doc_report h4 {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #888E9D;
+    margin-bottom: 3px;
+    }
+    .doc_report h3 {
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #001B0D;
+    }
+    .tab {
+    border: 1px solid #80C2A0;
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    margin: 25px 10px 20px;
+    border-radius: 5px;
+    }
+    .tab__item {
+    flex: 1;
+    height: 35px;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    border-radius: 5px;
+    }
+    .tab__item.is_active {
+    background: #008541;
+    color: #fff;
+    cursor: default;
+    }
+    .doc_fees {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    }
+    .doc_fees h4 {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #888E9D;
+    margin-bottom: 5px;
+    }
+    .doc_fees h3 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #001B0D;
+    }
+    .doc_fees h3 span {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #888E9D;
+    }
+    .doc_details {
+    margin-top: 25px;
+    }
+    .doc_details h2 {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #008541;
+    margin-bottom: 5px;
+    }
+    .doc_details p {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color: #001B0D;
+    margin-bottom: 10px;
+    }
+    .doc_details ul {
+    margin-left: 20px;
+    }
+    .doc_details ul li {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color: #001B0D;
+    }
+    .tab_content {
+    display: none;
+    padding: 0 10px 10px;
+    }
+    .tab_content.is_active {
+    display: block;
+    }
+    .card {
+    background: linear-gradient(0deg, #EFEFEF, #EFEFEF),
+    linear-gradient(0deg, #FBFBFB, #FBFBFB);
+    border: 1px solid #EFEFEF;
+    padding: 14px 21px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    }
+    .card:last-child {
+    margin-bottom: 0;
+    }
+    .card h2 {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 10px;
+    }
+    .card ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    list-style-type: none;
+    }
+    .card ul li h4 {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #888E9D;
+    }
+    .card ul li h3 {
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #001B0D;
+    }
+main
+  .breadcrumb
+    svg.breadcrumb__arrow_left_icon(width='24' height='24' viewbox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg')
+      path(d='M4.25 12.2739L19.25 12.2739' stroke='#121212' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round')
+      path(d='M10.2998 18.2985L4.2498 12.2745L10.2998 6.24951' stroke='#121212' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round')
+    |       Profile
+  .meta
+    .meta__thumb
+      img(src=photo alt='')
+    .meta__content
+      h2 #{doctor.name}
+      p #{specialty.title}
+      h5 #{hospital.name}
+  .doc_report
+    div
+      h4 Total Ratings
+      h3(style='display: flex; align-items: center; gap: 2px;')
+        svg(width='15' height='14' viewbox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M7.5 0L9.7042 4.46619L14.6329 5.18237L11.0665 8.65881L11.9084 13.5676L7.5 11.25L3.09161 13.5676L3.93354 8.65881L0.367076 5.18237L5.2958 4.46619L7.5 0Z' fill='#FFB530')
+        |           #{doctor.averageRating} (#{doctor.ratingCount})
+    div
+      h4 Experience in
+      h3 #{doctor.experienceInYear} Years
+    div
+      h4 BMDC No
+      h3 #{doctor.bmdcCode}
+  .tab
+    .tab__item.is_active(data-tab='one') Info
+    .tab__item(data-tab='two') Experience
+  .tab_content.one.is_active
+    .doc_fees
+      div
+        h4 Consultation Fee
+        h3
+          | &#x9F3; #{doctor.consultationFee} 
+          span (Incl 5% vat)
+      div
+        h4 Followup Fee
+        h3
+          | &#x9F3; #{doctor.followupFee} 
+          span (Incl 5% vat)
+      div
+        h4 Avarage consultancy time
+        h3 #{doctor.averageResponseTime} mins
+    .doc_details
+      h2 About Doctor
+      p
+        #{about}
+      p
+        | #{doctor.about}
+  .tab_content.two
+    each experience in experiences
+      .card
+        h2 Bangladesh Eye Hospital
+        ul
+          li
+            h4 Designation
+            h3 #{experience.designation}
+          li
+            h4 Department
+            h3 #{experience.department}
+          li
+            h4 Start Date
+            h3 #{experience.startDate.getFullYear()}-#{(experience.startDate.getMonth() + 1).toString().padStart(2, '0')}-#{experience.startDate.getDate().toString().padStart(2, '0')}
+          li
+            h4 End Date
+
+            if experience.currentlyWorkingHere
+              h3 Present
+            else
+              h3 #{experience.endDate.getFullYear()}-#{(experience.endDate.getMonth() + 1).toString().padStart(2, '0')}-#{experience.endDate.getDate().toString().padStart(2, '0')}
+    
+script.
+  const tabItems = document.querySelectorAll('.tab__item');
+  tabItems.forEach(item => {
+  item.addEventListener('click', () => {
+  tabItems.forEach(item => item.classList.remove('is_active'));
+  item.classList.add('is_active');
+  document.querySelectorAll('.tab_content').forEach(item => item.classList.remove('is_active'));
+  document.querySelector(`.tab_content.${item.dataset.tab}`).classList.add('is_active');
+  })
+  })

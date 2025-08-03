@@ -1,0 +1,27 @@
+module.exports = {
+  _id: 1,
+  transactionType: 1,
+  criteria: 1,
+  account: {
+    _id: 1,
+    accountType: 1,
+    bankName: 1,
+    branch: 1,
+    accountName: 1,
+    accountNumber: 1,
+  },
+  amount: 1,
+  doctor: {
+    _id: 1,
+    name: 1,
+    phone: 1,
+    dialCode: 1,
+    photo: 1,
+    bmdcCode: 1,
+    about: 1,
+  },
+  transferredBy: 1,
+  note: 1,
+  status: 1,
+  createdAt: 1,
+};
