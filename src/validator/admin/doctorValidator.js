@@ -6,8 +6,8 @@ const simpleValidator = require("../simpleValidator");
 exports.create = catchAsync(async (req, res, next) => {
   let rules = {
     name: "required",
-    specialty: "required|mongoid",
-    hospital: "required|mongoid",
+    specialty: "required|mongoidarray",
+    hospital: "required|mongoidarray",
     experienceInYear: "required",
     bmdcCode: "required",
     gender: "required|in:male,female,other,none",
@@ -16,6 +16,7 @@ exports.create = catchAsync(async (req, res, next) => {
     about: "required",
     phone: "required",
   };
+  console.log('specialty:', req.body.specialty);
 
   await simpleValidator(req.body, rules);
   let { phone } = req.body;
@@ -31,8 +32,8 @@ exports.update = catchAsync(async (req, res, next) => {
   let rules = {
     id: "required|mongoid",
     name: "required",
-    specialty: "required|mongoid",
-    hospital: "required|mongoid",
+    specialty: "required|mongoidarray",
+    hospital: "required|mongoidarray",
     experienceInYear: "required",
     bmdcCode: "required",
     gender: "required|in:male,female,other,none",

@@ -59,3 +59,6 @@ const userSchema = new Schema(
 );
 const OtpVerification = mongoose.model("OtpVerification", userSchema);
 module.exports = OtpVerification;
+
+
+

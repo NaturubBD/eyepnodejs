@@ -4,15 +4,21 @@ const AppError = require("../exception/AppError");
 
 function validateMongoId(name, value) {
   let hexadecimal = /^[0-9A-F]+$/i;
-  return value && hexadecimal.test(value) && value.length === 24;
+  return typeof value === "string" && value.length === 24 && hexadecimal.test(value);
 }
+
+function validateMongoIdArray(name, value) {
+  let hexadecimal = /^[0-9A-F]+$/i;
+  if (!Array.isArray(value)) return false;
+  return value.every(id => typeof id === "string" && id.length === 24 && hexadecimal.test(id));
+}
+
 function greaterThan(name, value, params) {
-  // console.log(name, value, params);
   let requirement = params[0];
   return Number(value) > Number(requirement);
 }
+
 function maxLength(name, value, params) {
-  // console.log(name, value, params);
   let requirement = params[0];
   return Number(value.length) <= Number(requirement);
 }
@@ -23,15 +29,12 @@ function arrayType(name, value, params) {
 
 function simpleValidator(data, rules) {
   const v = Validator.make(data, rules);
+
   v.extend("mongoid", validateMongoId, ":attr is not a valid object id");
+  v.extend("mongoidarray", validateMongoIdArray, ":attr contains invalid object ids");
   v.extend("array", arrayType, ":attr is not a valid array");
   v.extend("gt", greaterThan, ":attr should be greater than the current value");
-  v.extend(
-    "maxlength",
-    maxLength,
-    ":attr length should be less than the current"
-  );
-  // console.log(v);
+  v.extend("maxlength", maxLength, ":attr length should be less than the current");
 
   if (v.fails()) {
     let errors = v.getErrors();
@@ -41,4 +44,5 @@ function simpleValidator(data, rules) {
   }
   return true;
 }
+
 module.exports = simpleValidator;

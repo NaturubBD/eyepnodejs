@@ -32,12 +32,12 @@ exports.getDoctorList = async (filterOptions, patientInfo = {}) => {
         as: "hospital",
       },
     },
-    {
-      $unwind: {
-        path: "$hospital",
-        preserveNullAndEmptyArrays: true,
-      },
-    },
+    // {
+    //   $unwind: {
+    //     path: "$hospital",
+    //     preserveNullAndEmptyArrays: true,
+    //   },
+    // },
     {
       $lookup: {
         from: "specialties",
@@ -46,12 +46,12 @@ exports.getDoctorList = async (filterOptions, patientInfo = {}) => {
         as: "specialty",
       },
     },
-    {
-      $unwind: {
-        path: "$specialty",
-        preserveNullAndEmptyArrays: true,
-      },
-    },
+    // {
+    //   $unwind: {
+    //     path: "$specialty",
+    //     preserveNullAndEmptyArrays: true,
+    //   },
+    // },
 
     {
       $lookup: {

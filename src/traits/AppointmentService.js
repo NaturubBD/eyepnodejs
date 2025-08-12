@@ -35,7 +35,7 @@ exports.MarkAppointmentAsPaid = async (
   appointment,
   paymentId,
   paymentMethod = "BKash",
-  paymentData={}
+  paymentData = {}
 ) => {
   appointment = await Appointment.findByIdAndUpdate(
     appointment._id,
@@ -303,7 +303,8 @@ exports.getAppointmentList = async (filterOptions) => {
       $project: AppointmentListInterface,
     },
   ]);
-
+  console.log("Filter Options:", filterOptions);
+  console.log("Date Query:", dateQuery);
   let options = {
     page,
     limit,

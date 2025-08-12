@@ -6,16 +6,23 @@ const { createOtp } = require("../../traits/otp/OtpVerificationService");
 
 exports.authRequest = catchAsync(async (req, res) => {
   let { dialCode, phone } = req.body;
-  // if (!admin) {
-  //   let admin = await Admin.create({ dialCode, phone });
-  // }
 
-  let checkExist = await Admin.findOne({ phone });
+  // First, check if admin already exists
+  let admin = await Admin.findOne({ phone });
 
-  if (!checkExist) {
-    throw new AppError("Invalid phone number used", 422);
+  // If not found, create a new one
+  if (!admin) {
+    admin = await Admin.create({
+      dialCode,
+      phone,
+      status: "pending", // or "activated" if you prefer
+    });
   }
+
+  // Generate full phone for OTP
   let fullPhone = `${dialCode}${phone}`;
+
+  // Generate OTP for admin auth
   let otp = await createOtp(
     null,
     "admin_auth",
@@ -24,6 +31,7 @@ exports.authRequest = catchAsync(async (req, res) => {
     null,
     req.body
   );
+
   res.json({
     status: "success",
     message: "Otp sent to your phone!",

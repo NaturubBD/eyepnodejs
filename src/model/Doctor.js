@@ -24,14 +24,19 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
-    specialty: {
-      type: mongoose.Types.ObjectId,
-      ref: "Specialty",
-    },
-    hospital: {
-      type: mongoose.Types.ObjectId,
-      ref: "Hospital",
-    },
+    specialty: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Specialty",
+      }
+    ],
+    hospital: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Hospital",
+      }
+    ],
+
     gender: {
       type: String,
       enum: ["male", "female", "other", "none"],
